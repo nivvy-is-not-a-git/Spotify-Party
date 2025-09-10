@@ -5,6 +5,7 @@ import './index.css'
 import Login from './login.jsx'
 import Home from './home.jsx'
 import Create from './create.jsx'
+import Songs from './songs.jsx'
 
 const router = createBrowserRouter( [
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter( [
     element:<Create />
 
   },
+  {
+    path: '/songs/:playlistId',
+    element:<Songs />
+  }
 
 ] );
 

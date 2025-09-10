@@ -54,3 +54,20 @@ def playlists():
     # playlist_ids= [pl["id"] for pl in data.get("items", [])]
     return jsonify(data)
 
+@create_page.get("/playlists/<playlist_id>/tracks")
+def songs(playlist_id): 
+    data, status = _spotify_get(f"https://api.spotify.com/v1/playlists/{playlist_id}/tracks")
+    if status != 200:
+            return jsonify({"error": "spotify_playlists_failed"}), status
+    return jsonify(data), 200
+@create_page.post("/playlists/<playlist_id>/reorder")
+def reorder_playlist(playlist_id):
+    data = request.get_json()
+    order = data.get("order", [])
+    if not order:
+        return jsonify ({"error": "No order provided"}), 400
+    data, status = _spotify_get(f"https://api.spotify.com/v1/playlists/{playlist_id}/tracks")
+    if status != 200:
+        return jsonify({"error": "spotify_tracks_failed"}), status
+
+    

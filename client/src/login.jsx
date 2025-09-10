@@ -14,9 +14,13 @@ const Login = () => {
   );
 }
   return (
-    
-    <div><h1>React + Flask</h1><a href="/api/login">Log in with Spotify</a></div>
-  );
+    <div className="flex items-center justify-center min-h-screen">
+    <button
+      onClick={() => window.location.href = "/api/login"}
+      className="py-3 px-3 rounded-xl font-semibold text-white bg-green-600 hover:bg-green-700 active:bg-green-800 shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500/60">Log in with Spotify
+    </button>
+    </div>
+    );
 };
 
 export default Login
